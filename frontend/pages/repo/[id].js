@@ -1,10 +1,10 @@
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
-import api from '../../../lib/api'
-import RepoViewer from '../../../components/RepoViewer'
-import AgentSelector from '../../../components/AgentSelector'
-import ResultsPanel from '../../../components/ResultsPanel'
-import ChatPanel from '../../../components/ChatPanel'
+import api from '../../lib/api'
+import RepoViewer from '../../components/RepoViewer'
+import AgentSelector from '../../components/AgentSelector'
+import ResultsPanel from '../../components/ResultsPanel'
+import ChatPanel from '../../components/ChatPanel'
 
 export default function RepoPage(){
   const router = useRouter()

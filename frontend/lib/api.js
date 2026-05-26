@@ -1,9 +1,18 @@
 const BASE = process.env.NEXT_PUBLIC_API_BASE || ''
 
 async function uploadRepo(form){
-  const res = await fetch(`${BASE}/api/upload`, {method:'POST', body: form})
+  // always use the frontend proxy route to ensure files are parsed server-side
+  const res = await fetch(`/api/upload`, {method:'POST', body: form})
+  const text = await res.text()
+  if(!res.ok) throw new Error(text || res.statusText)
+  if(!text) return {}
+  try { return JSON.parse(text) } catch (e) { return text }
+}
+
+async function deleteUpload(id){
+  const res = await fetch(`/api/uploads/${id}`, {method: 'DELETE'})
   if(!res.ok) throw new Error(await res.text())
-  return res.json()
+  return res.text()
 }
 
 async function analyze(repoId, agent){
@@ -24,4 +33,4 @@ async function getRepo(repoId){
   return res.json()
 }
 
-export default {uploadRepo, analyze, sendChat, getRepo}
+export default {uploadRepo, deleteUpload, analyze, sendChat, getRepo}
