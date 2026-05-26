@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@300;400;600;700&display=swap');
+
+:root{
+  /* Minimal neutral matte palette */
+  --bg:#f5f6f7; /* airy neutral */
+  --surface:#ffffff; /* cards */
+  --ink:#111319; /* main text */
+  --muted:#7b8189; /* secondary text */
+  --stone-500:#9aa0a6; /* decorative accents */
+  --primary:#22272b; /* deep neutral for headings & actions */
+  --soft:#eef0f2; /* subtle surfaces */
+  --glass: rgba(255,255,255,0.6);
+  --success:#2f9e88;
+  --radius:12px;
+}
+
+/* Dark theme */
+:root.dark{
+  --bg:#0b0f12;
+  --surface:#0f1417;
+  --ink:#e6eef3;
+  --muted:#98a3ad;
+  --stone-500:#566070;
+  --primary:#d7dde2;
+  --soft:#0b1113;
+  --glass: rgba(10,14,16,0.4);
+  --success:#34d399;
+}
+
+*{box-sizing:border-box}
+html,body,#__next{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-weight:400;
+}
+
+/* Atmospheric subtle background texture */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image: radial-gradient(circle at 10% 10%, rgba(34,39,43,0.02) 0%, transparent 15%),
+                    radial-gradient(circle at 90% 80%, rgba(34,39,43,0.02) 0%, transparent 12%);
+  opacity:1;filter:blur(24px);
+}
+
+/* Branding / header */
+.container{max-width:980px;margin:36px auto;padding:28px;background:linear-gradient(180deg,var(--surface),var(--soft));border-radius:var(--radius);box-shadow:0 8px 30px rgba(16,22,26,0.06)}
+.header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.logo{font-weight:400;color:var(--primary);font-family:'DM Serif Display', serif;font-size:20px;letter-spacing:0.6px}
+
+/* Typographic scale */
+h1{margin:0 0 8px 0;font-family:'DM Serif Display',serif;font-size:28px;color:var(--primary);font-weight:400}
+h2{font-family:'DM Serif Display',serif;font-size:20px;margin:0;color:var(--primary)}
+p{margin:0 0 12px 0;color:var(--muted);font-size:15px}
+
+/* Layout helpers */
+.row{display:flex;gap:12px}
+.column{display:flex;flex-direction:column}
+
+/* Buttons */
+.button{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;background:transparent;color:var(--primary);border:1px solid rgba(34,39,43,0.06);cursor:pointer;font-weight:600;transition:transform .12s ease, box-shadow .12s ease}
+.button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,39,43,0.06)}
+.button.primary{background:var(--primary);color:var(--surface);border:none}
+.button.secondary{background:transparent;color:var(--primary);border:1px solid rgba(34,39,43,0.06)}
+.button.ghost{background:transparent;color:var(--muted);border:none}
+.button:focus{outline:3px solid rgba(34,39,43,0.06);outline-offset:3px}
+
+/* Inputs and selects */
+input[type="text"], input[type="url"], input[type="file"], textarea, select{
+  width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(34,39,43,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));color:var(--ink);font-size:15px;transition:border-color .12s ease, box-shadow .12s ease
+}
+:root.dark input[type="text"], :root.dark textarea, :root.dark select{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+input:focus, textarea:focus, select:focus{border-color:var(--stone-500);box-shadow:0 6px 18px rgba(34,39,43,0.04);outline:none}
+
+/* Cards and panels */
+.card{background:linear-gradient(180deg,var(--surface),rgba(255,255,255,0.96));border-radius:14px;padding:16px;border:1px solid rgba(34,39,43,0.04)}
+.card.subtle{background:var(--glass);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.04)}
+
+/* Repo viewer specifics */
+pre{padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(34,39,43,0.04);overflow:auto}
+
+/* Chat and results */
+.chat-bubble{padding:10px 12px;border-radius:10px;max-width:85%}
+.chat-bubble.user{background:linear-gradient(90deg, rgba(34,39,43,0.04), rgba(34,39,43,0.02));align-self:flex-end}
+.chat-bubble.agent{background:linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));align-self:flex-start}
+
+/* Small motion touches */
+.fade-in{animation:fadeIn .36s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Utilities */
+.text-muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* Footer */
+.footer{margin-top:24px;color:var(--muted);font-size:0.9rem;text-align:center}
