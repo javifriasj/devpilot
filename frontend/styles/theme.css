@@ -1,0 +1,58 @@
+:root{
+  --bg:#f3f4f6; /* neutral matte background */
+  --surface:#ffffff;
+  --primary:#374151; /* slate muted */
+  --primary-600:#1f2937;
+  --accent:#9ca3af; /* soft gray accent */
+  --muted:#6b7280;
+  --text:#0f1724;
+  --success:#10b981;
+}
+
+/* Dark theme overrides */
+:root.dark{
+  --bg:#0b1220;
+  --surface:#0f1724;
+  --primary:#cbd5e1; /* light slate */
+  --primary-600:#e6eef8;
+  --accent:#475569;
+  --muted:#94a3b8;
+  --text:#e6eef8;
+  --success:#34d399;
+}
+
+*{box-sizing:border-box}
+html,body,#__next{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,-apple-system;-webkit-font-smoothing:antialiased}
+
+a{color:var(--primary);text-decoration:none}
+
+.container{max-width:920px;margin:40px auto;padding:24px;background:var(--surface);border-radius:12px;box-shadow:0 4px 14px rgba(15,23,42,0.04)}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.logo{font-weight:700;color:var(--primary);font-size:1.2rem;letter-spacing:0.2px}
+
+/* Typography */
+h1{margin:0 0 8px 0;font-size:1.6rem}
+p{margin:0 0 12px 0;color:var(--muted)}
+
+/* Buttons */
+.button{display:inline-block;padding:8px 14px;border-radius:8px;background:var(--primary);color:var(--surface);border:none;cursor:pointer;box-shadow:none}
+.button.secondary{background:transparent;color:var(--primary);border:1px solid rgba(15,23,42,0.06)}
+.button.ghost{background:transparent;color:var(--muted);border:none}
+.button:focus{outline:2px solid rgba(99,102,241,0.12);outline-offset:2px}
+
+/* Inputs / selects */
+input[type="text"], input[type="url"], input[type="file"], textarea, select{
+  width:100%;padding:10px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--text);
+}
+input:focus, textarea:focus, select:focus{border-color:var(--primary-600);box-shadow:0 0 0 4px rgba(99,102,241,0.06);outline:none}
+
+/* Panels and cards */
+.card{background:var(--surface);border-radius:10px;padding:12px;border:1px solid rgba(15,23,42,0.03)}
+
+/* Code blocks */
+pre, code{background:transparent;color:var(--text);font-family:Menlo,monospace;font-size:13px}
+pre{padding:12px;border-radius:8px;border:1px solid rgba(15,23,42,0.04);overflow:auto}
+
+/* Footer */
+.footer{margin-top:24px;color:var(--muted);font-size:0.9rem;text-align:center}
