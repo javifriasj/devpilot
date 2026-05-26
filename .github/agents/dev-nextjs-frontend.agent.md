@@ -6,6 +6,7 @@ applyTo:
   - "**/*.{js,jsx,ts,tsx,css,scss,cssmodule}"
 languages: ["javascript","typescript"]
 tools: ["bash", "git", "node"]
+delegateOnly: true
 ---
 
 Actúa como desarrollador frontend experto en Next.js. Prioriza:

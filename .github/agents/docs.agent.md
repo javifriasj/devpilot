@@ -5,6 +5,7 @@ applyTo:
   - "**"
 languages: ["markdown","yaml"]
 tools: ["bash","git"]
+delegateOnly: true
 ---
 
 Actúa como generador de documentación. Prioriza:

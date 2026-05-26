@@ -8,6 +8,7 @@ applyTo:
   - "**/*.{js,ts,jsx,tsx}"
 languages: ["python","javascript","typescript"]
 tools: ["bash","git","python","node"]
+delegateOnly: true
 ---
 
 Actúa como desarrollador automatizado. Prioriza:

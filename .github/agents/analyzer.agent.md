@@ -5,6 +5,7 @@ applyTo:
   - "**"
 languages: ["python","javascript","typescript"]
 tools: ["bash","git","python"]
+delegateOnly: true
 ---
 
 Actúa como analista de código. Prioriza:

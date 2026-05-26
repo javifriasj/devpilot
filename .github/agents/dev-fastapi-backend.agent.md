@@ -6,6 +6,7 @@ applyTo:
   - "**/*.py"
 languages: ["python"]
 tools: ["bash", "git", "python", "docker"]
+delegateOnly: true
 ---
 
 Actúa como desarrollador backend especializado en FastAPI. Prioriza:

@@ -8,6 +8,7 @@ applyTo:
   - "frontend/**"
 languages: ["python","javascript","typescript"]
 tools: ["bash", "git", "python", "node"]
+delegateOnly: true
 ---
 
 Actúa como ingeniero de QA/Testing. Prioriza:
