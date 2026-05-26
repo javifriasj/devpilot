@@ -1,0 +1,57 @@
+name: CI + Release Notes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: Run CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  release:
+    name: Create Release Notes
+    needs: ci
+    runs-on: ubuntu-latest
+    if: success()   # Solo si CI pasa
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate Release Notes
+        id: notes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const notes = await github.rest.repos.generateReleaseNotes({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: `v${Date.now()}`,
+            });
+            core.setOutput("body", notes.data.body);
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "auto-release-${{ github.run_number }}"
+          name: "Release ${{ github.run_number }}"
+          body: ${{ steps.notes.outputs.body }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
